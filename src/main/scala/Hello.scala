@@ -55,4 +55,14 @@
     case x :: tail => if (x == s) true else existeCadena(tail, s)
 
 
+  def reemplazarLista(lista: List[Int], n1: Int, n2: Int): List[Int] = lista match {
+    case Nil => Nil
+    case head :: Nil => if (head == n1) lista.updated(0, n2) else lista
+    case head :: tail => if (head == n1) lista.updated(0, n2).head :: reemplazarLista(tail, n1, n2)
+    else head :: reemplazarLista(tail, n1, n2)
+  }
+
+
+  val nuevaLista: List[Int] = reemplazarLista(List(1, 2, 2, 4, 5), 2, 0)
+  println(nuevaLista)
 }
